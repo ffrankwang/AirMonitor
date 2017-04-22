@@ -3,14 +3,14 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>com.thinkgem.jeesite</groupId>
+	<groupId>me.frank.jeesite</groupId>
 	<artifactId>AirMonitor</artifactId>
 	<version>1.2.7</version>
 	<packaging>war</packaging>
 	
 	<name>AirMonitor</name>
-	<url>http://thinkgem.github.com/jeesite</url>
-	<inceptionYear>2012-2016</inceptionYear>
+	<url>https://github.com/wanghuu</url>
+	<inceptionYear>2012-2017</inceptionYear>
 	
 	<!-- 项目属性 -->
 	<properties>
@@ -48,10 +48,10 @@
 		<mssql.driver.version>1.3.1</mssql.driver.version>
 	    
 		<!-- environment setting -->
-		<jdk.version>1.6</jdk.version>
+		<jdk.version>1.8</jdk.version>
 		<tomcat.version>2.2</tomcat.version>
 		<jetty.version>7.6.14.v20131031</jetty.version>
-		<webserver.port>8181</webserver.port>
+		<webserver.port>8080</webserver.port>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<downloadSources>true</downloadSources>
 		
@@ -976,9 +976,9 @@
 	<!-- 开发者信息 -->
 	<developers>  
 		<developer>
-			<id>thinkgem</id>
-			<name>WangZhen</name>
-			<email>thinkgem at 163.com</email>
+			<id>wanghuu</id>
+			<name>Frank Wang</name>
+			<email>tigerdream52@gmail.com</email>
 			<roles><role>Project lead</role></roles>
 			<timezone>+8</timezone>
 		</developer>
