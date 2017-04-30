@@ -15,7 +15,7 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class TbCO2 extends DataEntity<TbCO2> {
 	
 	private static final long serialVersionUID = 1L;
-	private String co2;		// co2浓度
+	private Integer co2;		// co2浓度
 	
 	public TbCO2() {
 		super();
@@ -25,13 +25,12 @@ public class TbCO2 extends DataEntity<TbCO2> {
 		super(id);
 	}
 
-	@Length(min=0, max=11, message="co2浓度长度必须介于 0 和 11 之间")
-	public String getCo2() {
+	public Integer getCo2() {
 		return co2;
 	}
 
-	public void setCo2(String co2) {
+	public void setCo2(Integer co2) {
 		this.co2 = co2;
 	}
-	
+
 }

@@ -14,8 +14,8 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class TbTempHum extends DataEntity<TbTempHum> {
 	
 	private static final long serialVersionUID = 1L;
-	private String temp;		// 温度
-	private String hum;		// 湿度
+	private Float temp;		// 温度
+	private Float hum;		// 湿度
 	
 	public TbTempHum() {
 		super();
@@ -25,20 +25,21 @@ public class TbTempHum extends DataEntity<TbTempHum> {
 		super(id);
 	}
 
-	public String getTemp() {
+	public Float getTemp() {
 		return temp;
 	}
 
-	public void setTemp(String temp) {
+	public void setTemp(Float temp) {
 		this.temp = temp;
 	}
-	
-	public String getHum() {
+
+	public Float getHum() {
 		return hum;
 	}
 
-	public void setHum(String hum) {
+	public void setHum(Float hum) {
 		this.hum = hum;
 	}
+
 	
 }

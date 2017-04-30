@@ -3,14 +3,18 @@
  */
 package com.thinkgem.jeesite.modules.air.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.service.CrudService;
+import com.thinkgem.jeesite.common.utils.JMap;
 import com.thinkgem.jeesite.modules.air.entity.TbAirQuality;
+import com.thinkgem.jeesite.modules.air.util.AQGenerator;
 import com.thinkgem.jeesite.modules.air.dao.TbAirQualityDao;
 
 /**
@@ -44,9 +48,15 @@ public class TbAirQualityService extends CrudService<TbAirQualityDao, TbAirQuali
 		super.delete(tbAirQuality);
 	}
 
-    public TbAirQuality getCurrentAQ() {
-		TbAirQuality AQ=new TbAirQuality();
-		//AQ.setCo2();
-		return null;
+    public JMap getCurrentAQ() {
+    	JMap create = JMap.create();
+    	TbAirQuality currentAQ = AQGenerator.getCurrentAQ();
+    	Map<String,Object> map=new HashMap<String,Object>();
+    	map.put("temp", currentAQ.getTempHum().getTemp());
+    	map.put("hum", currentAQ.getTempHum().getHum());
+    	map.put("co2", currentAQ.getCo2().getCo2());
+    	map.put("pm25", currentAQ.getPm25().getPm25());
+    	create.set(map);
+    	return create;
     }
 }

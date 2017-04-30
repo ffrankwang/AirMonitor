@@ -1,5 +1,4 @@
 package com.thinkgem.jeesite.common.utils;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
@@ -181,6 +180,9 @@ public class DSerialPort implements Runnable, SerialPortEventListener {
 			Thread t = new Thread(this);
 			t.start();
 			log(String.format("监听程序将在%1$d秒后关闭。。。。", threadTime));
+		}else{
+			Thread t = new Thread(this);
+			t.start();
 		}
 	}
 

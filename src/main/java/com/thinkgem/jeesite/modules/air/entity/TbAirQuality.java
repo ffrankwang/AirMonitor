@@ -50,4 +50,10 @@ public class TbAirQuality extends DataEntity<TbAirQuality> {
 	public void setCo2(TbCO2 co2) {
 		this.co2 = co2;
 	}
+
+	@Override
+	public String toString() {
+		return "The Current air quality: [temp=" + String.format("%.2f", tempHum.getTemp()) + ",hum="+String.format("%.2f", tempHum.getHum())+", pm25=" + pm25.getPm25() + ", co2=" + co2.getCo2() + "]";
+	}
+	
 }

@@ -15,7 +15,7 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 public class TbPm25 extends DataEntity<TbPm25> {
 	
 	private static final long serialVersionUID = 1L;
-	private String pm25;		// pm2.5
+	private Integer pm25;		// pm2.5
 	
 	public TbPm25() {
 		super();
@@ -25,13 +25,13 @@ public class TbPm25 extends DataEntity<TbPm25> {
 		super(id);
 	}
 
-	@Length(min=1, max=11, message="登录名长度必须介于 1 和 11 之间")
-	public String getPm25() {
+	public Integer getPm25() {
 		return pm25;
 	}
 
-	public void setPm25(String pm25) {
+	public void setPm25(Integer pm25) {
 		this.pm25 = pm25;
 	}
+
 	
 }

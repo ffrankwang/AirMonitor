@@ -6,58 +6,33 @@
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			
+			setInterval("requestAQ()",2000);
 		});
-		function page(n,s){
-			$("#pageNo").val(n);
-			$("#pageSize").val(s);
-			$("#searchForm").submit();
-        	return false;
-        }
+		function requestAQ(){
+			$.ajax({
+				url : "${ctx}/air/tbAirQuality/currentAQ",
+				type : "get",
+				dataType : "json",
+				success : function(data) {
+					if(data.isOk){
+						var str = "<p>温度："+data.temp.toString()+"</p><p>湿度："+data.hum+"</p><p>co2浓度:"+data.co2+"</p><p>pm2.5:"+data.pm25;
+						$("#airQuality").html(str);
+					}else{
+						$("#airQuality").html("遇到了点问题。。。");
+					}
+					
+				},
+				error: function() {
+			        // alert("失败，请稍后再试！");
+			      }
+			 });
+		}
+		
 	</script>
 </head>
 <body>
-	<ul class="nav nav-tabs">
-		<li class="active"><a href="${ctx}/air/tbAirQuality/">当前空气质量</a></li>
-	</ul>
-	<form:form id="searchForm" modelAttribute="tbAirQuality" action="${ctx}/air/tbAirQuality/" method="post" class="breadcrumb form-search">
-		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
-		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
-		<ul class="ul-form">
-			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
-			<li class="clearfix"></li>
-		</ul>
-	</form:form>
-	<sys:message content="${message}"/>
-	<table id="contentTable" class="table table-striped table-bordered table-condensed">
-		<thead>
-			<tr>
-				<th>temp_hum</th>
-				<th>pm25</th>
-				<th>co2</th>
-				<shiro:hasPermission name="air:tbAirQuality:edit"><th>操作</th></shiro:hasPermission>
-			</tr>
-		</thead>
-		<tbody>
-		<c:forEach items="${page.list}" var="tbAirQuality">
-			<tr>
-				<td><a href="${ctx}/air/tbAirQuality/form?id=${tbAirQuality.id}">
-					${tbAirQuality.tempHum.temp},${tbAirQuality.tempHum.hum}
-				</a></td>
-				<td>
-					${tbAirQuality.pm25.pm25}
-				</td>
-				<td>
-					${tbAirQuality.co2.co2}
-				</td>
-				<shiro:hasPermission name="air:tbAirQuality:edit"><td>
-    				<a href="${ctx}/air/tbAirQuality/form?id=${tbAirQuality.id}">修改</a>
-					<a href="${ctx}/air/tbAirQuality/delete?id=${tbAirQuality.id}" onclick="return confirmx('确认要删除该空气质量吗？', this.href)">删除</a>
-				</td></shiro:hasPermission>
-			</tr>
-		</c:forEach>
-		</tbody>
-	</table>
-	<div class="pagination">${page}</div>
+	<h2 align="center">当前空气质量</h2>
+	<div id="airQuality" align="center" >
+	</div>
 </body>
 </html>
