@@ -7,14 +7,12 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Enumeration;
 import java.util.TooManyListenersException;
-
 import gnu.io.CommPortIdentifier;
 import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
 import gnu.io.SerialPortEvent;
 import gnu.io.SerialPortEventListener;
 import gnu.io.UnsupportedCommOperationException;
-
 
 /**
  * @项目名称 :illegalsms
@@ -165,17 +163,17 @@ public class DSerialPort implements Runnable, SerialPortEventListener {
 		}
 
 		serialPort.notifyOnDataAvailable(true);
-
-		/*
-         * 侦听到串口有数据,触发串口事件
-         */
-		try {
-			serialPort.setSerialPortParams(115200,//波特率
-					SerialPort.DATABITS_8,//数据位数
-					SerialPort.STOPBITS_1,//停止位
-					SerialPort.PARITY_NONE);//校验
-		} catch (UnsupportedCommOperationException e) {
-		}
+		
+		/* 
+         * 侦听到串口有数据,触发串口事件 
+         */  
+        try {  
+            serialPort.setSerialPortParams(115200,//波特率  
+                    SerialPort.DATABITS_8,//数据位数  
+                    SerialPort.STOPBITS_1,//停止位  
+                    SerialPort.PARITY_NONE);//校验  
+        } catch (UnsupportedCommOperationException e) {  
+        }  
 
 		log(String.format("开始监听来自'%1$s'的数据--------------", commPort.getName()));
 		if (time > 0) {
@@ -207,46 +205,46 @@ public class DSerialPort implements Runnable, SerialPortEventListener {
 	@Override
 	public void serialEvent(SerialPortEvent arg0) {
 		switch (arg0.getEventType()) {
-			case SerialPortEvent.BI:/* Break interrupt,通讯中断 */
-			case SerialPortEvent.OE:/* Overrun error，溢位错误 */
-			case SerialPortEvent.FE:/* Framing error，传帧错误 */
-			case SerialPortEvent.PE:/* Parity error，校验错误 */
-			case SerialPortEvent.CD:/* Carrier detect，载波检测 */
-			case SerialPortEvent.CTS:/* Clear to send，清除发送 */
-			case SerialPortEvent.DSR:/* Data set ready，数据设备就绪 */
-			case SerialPortEvent.RI:/* Ring indicator，响铃指示 */
-			case SerialPortEvent.OUTPUT_BUFFER_EMPTY:/*
+		case SerialPortEvent.BI:/* Break interrupt,通讯中断 */
+		case SerialPortEvent.OE:/* Overrun error，溢位错误 */
+		case SerialPortEvent.FE:/* Framing error，传帧错误 */
+		case SerialPortEvent.PE:/* Parity error，校验错误 */
+		case SerialPortEvent.CD:/* Carrier detect，载波检测 */
+		case SerialPortEvent.CTS:/* Clear to send，清除发送 */
+		case SerialPortEvent.DSR:/* Data set ready，数据设备就绪 */
+		case SerialPortEvent.RI:/* Ring indicator，响铃指示 */
+		case SerialPortEvent.OUTPUT_BUFFER_EMPTY:/*
 													 * Output buffer is
 													 * empty，输出缓冲区清空
 													 */
-				break;
-			case SerialPortEvent.DATA_AVAILABLE:/*
+			break;
+		case SerialPortEvent.DATA_AVAILABLE:/*
 											 * Data available at the serial
 											 * port，端口有可用数据。读到缓冲数组，输出到终端
 											 */
-				byte[] readBuffer = new byte[1024];
-				String readStr = "";
-				String s2 = "";
+			byte[] readBuffer = new byte[1024];
+			String readStr = "";
+			String s2 = "";
 
-				try {
+			try {
 
-					while (inputStream.available() > 0) {
-						try {
-							Thread.sleep(200);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						inputStream.read(readBuffer);
-						readStr += new String(readBuffer).trim();
+				while (inputStream.available() > 0) {
+					try {
+						Thread.sleep(200);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
 					}
-
-					s2 = new String(readBuffer).trim();
-
-					log("接收到端口返回数据(长度为" + readStr.length() + ")：" + readBuffer);
-					log(s2);
-				} catch (IOException e) {
+					inputStream.read(readBuffer);
+					readStr += new String(readBuffer).trim();
 				}
+
+				s2 = new String(readBuffer).trim();
+
+				log("接收到端口返回数据(长度为" + readStr.length() + ")：" + readBuffer);
+				log(s2);
+			} catch (IOException e) {
+			}
 		}
 	}
 
