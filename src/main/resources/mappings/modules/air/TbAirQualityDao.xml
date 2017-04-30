@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.thinkgem.jeesite.modules.air.dao.TbAirQualityDao">
+    
+	<sql id="tbAirQualityColumns">
+		a.temp_hum AS "tempHum",
+		a.pm25 AS "pm25",
+		a.co2 AS "co2"
+	</sql>
+	
+	<sql id="tbAirQualityJoins">
+	</sql>
+    
+	<select id="get" resultType="TbAirQuality">
+		SELECT 
+			<include refid="tbAirQualityColumns"/>
+		FROM tb_air_quality a
+		<include refid="tbAirQualityJoins"/>
+		WHERE a.id = #{id}
+	</select>
+	
+	<select id="findList" resultType="TbAirQuality">
+		SELECT 
+			<include refid="tbAirQualityColumns"/>
+		FROM tb_air_quality a
+		<include refid="tbAirQualityJoins"/>
+		<where>
+			
+		</where>
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="findAllList" resultType="TbAirQuality">
+		SELECT 
+			<include refid="tbAirQualityColumns"/>
+		FROM tb_air_quality a
+		<include refid="tbAirQualityJoins"/>
+		<where>
+			
+		</where>		
+		<choose>
+			<when test="page !=null and page.orderBy != null and page.orderBy != ''">
+				ORDER BY ${page.orderBy}
+			</when>
+			<otherwise>
+			</otherwise>
+		</choose>
+	</select>
+	
+	<insert id="insert">
+		INSERT INTO tb_air_quality(
+			temp_hum,
+			pm25,
+			co2
+		) VALUES (
+			#{tempHum},
+			#{pm25},
+			#{co2}
+		)
+	</insert>
+	
+	<update id="update">
+		UPDATE tb_air_quality SET 	
+			temp_hum = #{tempHum},
+			pm25 = #{pm25},
+			co2 = #{co2}
+		WHERE id = #{id}
+	</update>
+	
+	<update id="delete">
+		DELETE FROM tb_air_quality
+		WHERE id = #{id}
+	</update>
+	
+</mapper>
