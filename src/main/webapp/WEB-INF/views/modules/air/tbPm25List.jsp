@@ -19,16 +19,16 @@
 <body>
 	<ul class="nav nav-tabs">
 		<li class="active"><a href="${ctx}/air/tbPm25/">PM2.5列表</a></li>
-		<shiro:hasPermission name="air:tbPm25:edit"><li><a href="${ctx}/air/tbPm25/form">PM2.5添加</a></li></shiro:hasPermission>
+		<%-- <shiro:hasPermission name="air:tbPm25:edit"><li><a href="${ctx}/air/tbPm25/form">PM2.5添加</a></li></shiro:hasPermission> --%>
 	</ul>
-	<form:form id="searchForm" modelAttribute="tbPm25" action="${ctx}/air/tbPm25/" method="post" class="breadcrumb form-search">
+<%-- 	<form:form id="searchForm" modelAttribute="tbPm25" action="${ctx}/air/tbPm25/" method="post" class="breadcrumb form-search">
 		<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 		<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
 		<ul class="ul-form">
 			<li class="btns"><input id="btnSubmit" class="btn btn-primary" type="submit" value="查询"/></li>
 			<li class="clearfix"></li>
 		</ul>
-	</form:form>
+	</form:form> --%>
 	<sys:message content="${message}"/>
 	<table id="contentTable" class="table table-striped table-bordered table-condensed">
 		<thead>

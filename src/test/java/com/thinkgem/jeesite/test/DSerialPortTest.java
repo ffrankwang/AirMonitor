@@ -13,7 +13,7 @@ public class DSerialPortTest {
 		DSerialPort serialPort=new DSerialPort();
 		serialPort.listPort();
 		serialPort.selectPort("COM3");
-		serialPort.startRead(0);
+		serialPort.startRead(300);
 		
 		Thread t1=new Thread(serialPort);
 		t1.run();

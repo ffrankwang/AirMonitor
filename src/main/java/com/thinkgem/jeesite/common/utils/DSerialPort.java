@@ -1,11 +1,21 @@
 package com.thinkgem.jeesite.common.utils;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.Enumeration;
+import java.util.Map;
 import java.util.TooManyListenersException;
+
+import org.apache.commons.dbutils.DbUtils;
+import org.apache.commons.dbutils.QueryRunner;
+
 import gnu.io.CommPortIdentifier;
 import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
@@ -55,7 +65,7 @@ public class DSerialPort implements Runnable, SerialPortEventListener {
 
 	/**
 	 * @方法名称 :selectPort
-	 * @功能描述 :选择一个端口，比如：COM1
+	 * @功能描述 :选择一个端口，比如：COM3
 	 * @返回值类型 :void
 	 * @param portName
 	 */
@@ -160,27 +170,26 @@ public class DSerialPort implements Runnable, SerialPortEventListener {
 		} catch (TooManyListenersException e) {
 			throw new RuntimeException(e.getMessage());
 		}
-
+		/*
+		 * 侦听到串口有数据,触发串口事件
+		 */
 		serialPort.notifyOnDataAvailable(true);
-		
-		/* 
-         * 侦听到串口有数据,触发串口事件 
-         */  
-        try {  
-            serialPort.setSerialPortParams(115200,//波特率  
-                    SerialPort.DATABITS_8,//数据位数  
-                    SerialPort.STOPBITS_1,//停止位  
-                    SerialPort.PARITY_NONE);//校验  
-        } catch (UnsupportedCommOperationException e) {  
-        }  
+
+		try {
+			serialPort.setSerialPortParams(115200, // 波特率
+					SerialPort.DATABITS_8, // 数据位数
+					SerialPort.STOPBITS_1, // 停止位
+					SerialPort.PARITY_NONE);// 校验
+		} catch (UnsupportedCommOperationException e) {
+		}
 
 		log(String.format("开始监听来自'%1$s'的数据--------------", commPort.getName()));
 		if (time > 0) {
 			this.threadTime = time * 1000;
 			Thread t = new Thread(this);
 			t.start();
-			log(String.format("监听程序将在%1$d秒后关闭。。。。", threadTime));
-		}else{
+			log(String.format("监听程序将在%1$d秒后关闭。。。。", threadTime / 1000));
+		} else {
 			Thread t = new Thread(this);
 			t.start();
 		}
@@ -242,12 +251,19 @@ public class DSerialPort implements Runnable, SerialPortEventListener {
 				}
 
 				s2 = new String(readBuffer).trim();
+				analyze(s2);
 
 				log("接收到端口返回数据(长度为" + readStr.length() + ")：" + readBuffer);
 				log(s2);
 			} catch (IOException e) {
 			}
 		}
+	}
+
+	private void analyze(String s2) {
+		String temp = s2.substring(4, 6);
+		String hum = s2.substring(8, 10);
+		DBUtil.insertTempHum(temp, hum);
 	}
 
 	@Override
@@ -260,4 +276,5 @@ public class DSerialPort implements Runnable, SerialPortEventListener {
 			e.printStackTrace();
 		}
 	}
+
 }
