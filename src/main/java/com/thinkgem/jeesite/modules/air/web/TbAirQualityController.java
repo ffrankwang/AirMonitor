@@ -23,6 +23,7 @@ import com.google.common.collect.Lists;
 import com.thinkgem.jeesite.common.config.Global;
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.web.BaseController;
+import com.thinkgem.jeesite.common.utils.DSerialPort;
 import com.thinkgem.jeesite.common.utils.JMap;
 import com.thinkgem.jeesite.common.utils.StringUtils;
 import com.thinkgem.jeesite.modules.air.entity.TbAirQuality;
@@ -56,8 +57,8 @@ public class TbAirQualityController extends BaseController {
 	@RequiresPermissions("air:tbAirQuality:view")
 	@RequestMapping(value = {"list", ""})
 	public String list(TbAirQuality tbAirQuality, HttpServletRequest request, HttpServletResponse response, Model model) {
-		Page<TbAirQuality> page = tbAirQualityService.findPage(new Page<TbAirQuality>(request, response), tbAirQuality); 
-		model.addAttribute("page", page);
+		//Page<TbAirQuality> page = tbAirQualityService.findPage(new Page<TbAirQuality>(request, response), tbAirQuality); 
+		//model.addAttribute("page", page);
 		return "modules/air/tbAirQualityList";
 	}
 
@@ -95,5 +96,5 @@ public class TbAirQualityController extends BaseController {
 	public JMap getCurrentAQ(){
 		return tbAirQualityService.getCurrentAQ().setOk();
 	}
-
+	
 }

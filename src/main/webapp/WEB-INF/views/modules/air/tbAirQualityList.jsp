@@ -6,7 +6,7 @@
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
 		$(document).ready(function() {
-			setInterval("requestAQ()",2000);
+			setInterval("requestAQ()",2500);
 		});
 		function requestAQ(){
 			$.ajax({
