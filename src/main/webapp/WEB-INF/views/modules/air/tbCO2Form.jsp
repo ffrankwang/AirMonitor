@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <html>
 <head>
-	<title>CO2管理</title>
+	<title>二氧化碳管理</title>
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -27,16 +27,16 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li><a href="${ctx}/air/tbCO2/">CO2列表</a></li>
-		<li class="active"><a href="${ctx}/air/tbCO2/form?id=${tbCO2.id}">CO2<shiro:hasPermission name="air:tbCO2:edit">${not empty tbCO2.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="air:tbCO2:edit">查看</shiro:lacksPermission></a></li>
+		<li><a href="${ctx}/air/tbCO2/">二氧化碳列表</a></li>
+		<li class="active"><a href="${ctx}/air/tbCO2/form?id=${tbCO2.id}">二氧化碳<shiro:hasPermission name="air:tbCO2:edit">${not empty tbCO2.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="air:tbCO2:edit">查看</shiro:lacksPermission></a></li>
 	</ul><br/>
 	<form:form id="inputForm" modelAttribute="tbCO2" action="${ctx}/air/tbCO2/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">co2浓度：</label>
+			<label class="control-label">CO2浓度：</label>
 			<div class="controls">
-				<form:input path="co2" htmlEscape="false" maxlength="11" class="input-xlarge "/>
+				<form:input path="CO2" htmlEscape="false" class="input-xlarge  number"/>
 			</div>
 		</div>
 		<div class="form-actions">

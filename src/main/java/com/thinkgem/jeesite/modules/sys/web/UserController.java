@@ -49,7 +49,6 @@ public class UserController extends BaseController {
 
 	@Autowired
 	private SystemService systemService;
-	
 	@ModelAttribute
 	public User get(@RequestParam(required=false) String id) {
 		if (StringUtils.isNotBlank(id)){

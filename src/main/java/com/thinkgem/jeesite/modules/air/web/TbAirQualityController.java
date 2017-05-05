@@ -3,9 +3,6 @@
  */
 package com.thinkgem.jeesite.modules.air.web;
 
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -19,16 +16,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.common.collect.Lists;
 import com.thinkgem.jeesite.common.config.Global;
-import com.thinkgem.jeesite.common.persistence.Page;
-import com.thinkgem.jeesite.common.web.BaseController;
-import com.thinkgem.jeesite.common.utils.DSerialPort;
 import com.thinkgem.jeesite.common.utils.JMap;
 import com.thinkgem.jeesite.common.utils.StringUtils;
+import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.air.entity.TbAirQuality;
 import com.thinkgem.jeesite.modules.air.service.TbAirQualityService;
-import com.thinkgem.jeesite.modules.sys.entity.User;
 
 /**
  * 空气质量Controller
@@ -59,7 +52,7 @@ public class TbAirQualityController extends BaseController {
 	public String list(TbAirQuality tbAirQuality, HttpServletRequest request, HttpServletResponse response, Model model) {
 		//Page<TbAirQuality> page = tbAirQualityService.findPage(new Page<TbAirQuality>(request, response), tbAirQuality); 
 		//model.addAttribute("page", page);
-		return "modules/air/tbAirQualityList";
+		return "modules/air/tbAirQuality";
 	}
 
 	@RequiresPermissions("air:tbAirQuality:view")

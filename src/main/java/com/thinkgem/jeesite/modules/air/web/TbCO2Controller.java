@@ -23,9 +23,9 @@ import com.thinkgem.jeesite.modules.air.entity.TbCO2;
 import com.thinkgem.jeesite.modules.air.service.TbCO2Service;
 
 /**
- * CO2Controller
+ * 二氧化碳Controller
  * @author Frank Wang
- * @version 2017-04-27
+ * @version 2017-05-05
  */
 @Controller
 @RequestMapping(value = "${adminPath}/air/tbCO2")
@@ -68,7 +68,7 @@ public class TbCO2Controller extends BaseController {
 			return form(tbCO2, model);
 		}
 		tbCO2Service.save(tbCO2);
-		addMessage(redirectAttributes, "保存CO2成功");
+		addMessage(redirectAttributes, "保存二氧化碳成功");
 		return "redirect:"+Global.getAdminPath()+"/air/tbCO2/?repage";
 	}
 	
@@ -76,7 +76,7 @@ public class TbCO2Controller extends BaseController {
 	@RequestMapping(value = "delete")
 	public String delete(TbCO2 tbCO2, RedirectAttributes redirectAttributes) {
 		tbCO2Service.delete(tbCO2);
-		addMessage(redirectAttributes, "删除CO2成功");
+		addMessage(redirectAttributes, "删除二氧化碳成功");
 		return "redirect:"+Global.getAdminPath()+"/air/tbCO2/?repage";
 	}
 

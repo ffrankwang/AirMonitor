@@ -3,34 +3,33 @@
  */
 package com.thinkgem.jeesite.modules.air.entity;
 
-import org.hibernate.validator.constraints.Length;
 
 import com.thinkgem.jeesite.common.persistence.DataEntity;
 
 /**
- * PM2.5Entity
+ * 甲醛Entity
  * @author Frank Wang
- * @version 2017-04-27
+ * @version 2017-05-05
  */
-public class TbPm25 extends DataEntity<TbPm25> {
+public class TbHCHO extends DataEntity<TbHCHO> {
 	
 	private static final long serialVersionUID = 1L;
-	private Integer pm25;		// pm2.5
+	private Float HCHO;		// HCHO
 	
-	public TbPm25() {
+	public TbHCHO() {
 		super();
 	}
 
-	public TbPm25(String id){
+	public TbHCHO(String id){
 		super(id);
 	}
 
-	public Integer getPm25() {
-		return pm25;
+	public Float getHCHO() {
+		return HCHO;
 	}
 
-	public void setPm25(Integer pm25) {
-		this.pm25 = pm25;
+	public void setHCHO(Float hCHO) {
+		HCHO = hCHO;
 	}
 
 	

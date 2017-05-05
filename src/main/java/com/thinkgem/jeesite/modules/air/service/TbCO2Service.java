@@ -14,9 +14,9 @@ import com.thinkgem.jeesite.modules.air.entity.TbCO2;
 import com.thinkgem.jeesite.modules.air.dao.TbCO2Dao;
 
 /**
- * CO2Service
+ * 二氧化碳Service
  * @author Frank Wang
- * @version 2017-04-27
+ * @version 2017-05-05
  */
 @Service
 @Transactional(readOnly = true)

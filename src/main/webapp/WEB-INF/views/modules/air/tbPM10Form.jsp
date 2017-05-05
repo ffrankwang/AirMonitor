@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <html>
 <head>
-	<title>温湿度管理</title>
+	<title>PM10管理</title>
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -27,26 +27,20 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li><a href="${ctx}/air/tbTempHum/">温湿度列表</a></li>
-		<li class="active"><a href="${ctx}/air/tbTempHum/form?id=${tbTempHum.id}">温湿度<shiro:hasPermission name="air:tbTempHum:edit">${not empty tbTempHum.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="air:tbTempHum:edit">查看</shiro:lacksPermission></a></li>
+		<li><a href="${ctx}/air/tbPM10/">PM10列表</a></li>
+		<li class="active"><a href="${ctx}/air/tbPM10/form?id=${tbPM10.id}">PM10<shiro:hasPermission name="air:tbPM10:edit">${not empty tbPM10.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="air:tbPM10:edit">查看</shiro:lacksPermission></a></li>
 	</ul><br/>
-	<form:form id="inputForm" modelAttribute="tbTempHum" action="${ctx}/air/tbTempHum/save" method="post" class="form-horizontal">
+	<form:form id="inputForm" modelAttribute="tbPM10" action="${ctx}/air/tbPM10/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">温度：</label>
+			<label class="control-label">PM10：</label>
 			<div class="controls">
-				<form:input path="temp" htmlEscape="false" class="input-xlarge  number"/>
-			</div>
-		</div>
-		<div class="control-group">
-			<label class="control-label">湿度：</label>
-			<div class="controls">
-				<form:input path="hum" htmlEscape="false" class="input-xlarge  number"/>
+				<form:input path="PM10" htmlEscape="false" class="input-xlarge  number"/>
 			</div>
 		</div>
 		<div class="form-actions">
-			<shiro:hasPermission name="air:tbTempHum:edit"><input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;</shiro:hasPermission>
+			<shiro:hasPermission name="air:tbPM10:edit"><input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;</shiro:hasPermission>
 			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
 		</div>
 	</form:form>

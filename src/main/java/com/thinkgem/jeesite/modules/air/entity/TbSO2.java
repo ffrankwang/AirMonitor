@@ -7,29 +7,29 @@ package com.thinkgem.jeesite.modules.air.entity;
 import com.thinkgem.jeesite.common.persistence.DataEntity;
 
 /**
- * 二氧化碳Entity
+ * 二氧化硫Entity
  * @author Frank Wang
  * @version 2017-05-05
  */
-public class TbCO2 extends DataEntity<TbCO2> {
+public class TbSO2 extends DataEntity<TbSO2> {
 	
 	private static final long serialVersionUID = 1L;
-	private Float CO2;		// CO2浓度
+	private Float SO2;		// SO2
 	
-	public TbCO2() {
+	public TbSO2() {
 		super();
 	}
 
-	public TbCO2(String id){
+	public TbSO2(String id){
 		super(id);
 	}
 
-	public Float getCO2() {
-		return CO2;
+	public Float getSO2() {
+		return SO2;
 	}
 
-	public void setCO2(Float cO2) {
-		CO2 = cO2;
+	public void setSO2(Float sO2) {
+		SO2 = sO2;
 	}
 
 	

@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/views/include/taglib.jsp"%>
 <html>
 <head>
-	<title>PM2.5管理</title>
+	<title>甲醛管理</title>
 	<meta name="decorator" content="default"/>
 	<script type="text/javascript">
 		$(document).ready(function() {
@@ -27,20 +27,20 @@
 </head>
 <body>
 	<ul class="nav nav-tabs">
-		<li><a href="${ctx}/air/tbPm25/">PM2.5列表</a></li>
-		<li class="active"><a href="${ctx}/air/tbPm25/form?id=${tbPm25.id}">PM2.5<shiro:hasPermission name="air:tbPm25:edit">${not empty tbPm25.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="air:tbPm25:edit">查看</shiro:lacksPermission></a></li>
+		<li><a href="${ctx}/air/tbHCHO/">甲醛列表</a></li>
+		<li class="active"><a href="${ctx}/air/tbHCHO/form?id=${tbHCHO.id}">甲醛<shiro:hasPermission name="air:tbHCHO:edit">${not empty tbHCHO.id?'修改':'添加'}</shiro:hasPermission><shiro:lacksPermission name="air:tbHCHO:edit">查看</shiro:lacksPermission></a></li>
 	</ul><br/>
-	<form:form id="inputForm" modelAttribute="tbPm25" action="${ctx}/air/tbPm25/save" method="post" class="form-horizontal">
+	<form:form id="inputForm" modelAttribute="tbHCHO" action="${ctx}/air/tbHCHO/save" method="post" class="form-horizontal">
 		<form:hidden path="id"/>
 		<sys:message content="${message}"/>		
 		<div class="control-group">
-			<label class="control-label">pm2.5：</label>
+			<label class="control-label">HCHO：</label>
 			<div class="controls">
-				<form:input path="pm25" htmlEscape="false" maxlength="11" class="input-xlarge "/>
+				<form:input path="HCHO" htmlEscape="false" class="input-xlarge  number"/>
 			</div>
 		</div>
 		<div class="form-actions">
-			<shiro:hasPermission name="air:tbPm25:edit"><input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;</shiro:hasPermission>
+			<shiro:hasPermission name="air:tbHCHO:edit"><input id="btnSubmit" class="btn btn-primary" type="submit" value="保 存"/>&nbsp;</shiro:hasPermission>
 			<input id="btnCancel" class="btn" type="button" value="返 回" onclick="history.go(-1)"/>
 		</div>
 	</form:form>

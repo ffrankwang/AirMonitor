@@ -5,14 +5,14 @@ package com.thinkgem.jeesite.modules.air.dao;
 
 import com.thinkgem.jeesite.common.persistence.CrudDao;
 import com.thinkgem.jeesite.common.persistence.annotation.MyBatisDao;
-import com.thinkgem.jeesite.modules.air.entity.TbPm25;
+import com.thinkgem.jeesite.modules.air.entity.TbHCHO;
 
 /**
- * PM2.5DAO接口
+ * 甲醛DAO接口
  * @author Frank Wang
- * @version 2017-04-27
+ * @version 2017-05-05
  */
 @MyBatisDao
-public interface TbPm25Dao extends CrudDao<TbPm25> {
+public interface TbHCHODao extends CrudDao<TbHCHO> {
 	
 }

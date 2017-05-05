@@ -7,9 +7,6 @@ import java.util.Date;
 
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
-import org.apache.commons.dbutils.handlers.BeanHandler;
-
-import com.thinkgem.jeesite.modules.air.entity.TbTempHum;
 
 public class DBUtil {
 	private static Connection conn=getConnection();
@@ -58,7 +55,7 @@ public class DBUtil {
 			e.printStackTrace();
 		}
 	}
-
+/*
 	public static TbTempHum queryTempHum() {
 		QueryRunner qr = new QueryRunner();
 		String sql = "SELECT * FROM tb_temp_hum ORDER BY create_date DESC LIMIT 1";
@@ -70,6 +67,6 @@ public class DBUtil {
 		}
 
 		return lastTempHum;
-	}
+	}*/
 
 }

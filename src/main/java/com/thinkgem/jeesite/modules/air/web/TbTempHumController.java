@@ -25,7 +25,7 @@ import com.thinkgem.jeesite.modules.air.service.TbTempHumService;
 /**
  * 温湿度Controller
  * @author Frank Wang
- * @version 2017-04-27
+ * @version 2017-05-05
  */
 @Controller
 @RequestMapping(value = "${adminPath}/air/tbTempHum")

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.thinkgem.jeesite.modules.air.dao.TbPm25Dao">
+<mapper namespace="com.thinkgem.jeesite.modules.air.dao.TbSO2Dao">
     
-	<sql id="tbPm25Columns">
+	<sql id="tbSO2Columns">
 		a.id AS "id",
-		a.pm2_5 AS "pm25",
+		a.so2 AS "SO2",
 		a.create_by AS "createBy.id",
 		a.create_date AS "createDate",
 		a.update_by AS "updateBy.id",
@@ -12,22 +12,22 @@
 		a.del_flag AS "delFlag"
 	</sql>
 	
-	<sql id="tbPm25Joins">
+	<sql id="tbSO2Joins">
 	</sql>
     
-	<select id="get" resultType="TbPm25">
+	<select id="get" resultType="TbSO2">
 		SELECT 
-			<include refid="tbPm25Columns"/>
-		FROM tb_pm2_5 a
-		<include refid="tbPm25Joins"/>
+			<include refid="tbSO2Columns"/>
+		FROM tb_so2 a
+		<include refid="tbSO2Joins"/>
 		WHERE a.id = #{id}
 	</select>
 	
-	<select id="findList" resultType="TbPm25">
+	<select id="findList" resultType="TbSO2">
 		SELECT 
-			<include refid="tbPm25Columns"/>
-		FROM tb_pm2_5 a
-		<include refid="tbPm25Joins"/>
+			<include refid="tbSO2Columns"/>
+		FROM tb_so2 a
+		<include refid="tbSO2Joins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
 		</where>
@@ -41,11 +41,11 @@
 		</choose>
 	</select>
 	
-	<select id="findAllList" resultType="TbPm25">
+	<select id="findAllList" resultType="TbSO2">
 		SELECT 
-			<include refid="tbPm25Columns"/>
-		FROM tb_pm2_5 a
-		<include refid="tbPm25Joins"/>
+			<include refid="tbSO2Columns"/>
+		FROM tb_so2 a
+		<include refid="tbSO2Joins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
 		</where>		
@@ -60,9 +60,9 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO tb_pm2_5(
+		INSERT INTO tb_so2(
 			id,
-			pm2_5,
+			so2,
 			create_by,
 			create_date,
 			update_by,
@@ -70,7 +70,7 @@
 			del_flag
 		) VALUES (
 			#{id},
-			#{pm25},
+			#{SO2},
 			#{createBy.id},
 			#{createDate},
 			#{updateBy.id},
@@ -80,13 +80,13 @@
 	</insert>
 	
 	<update id="update">
-		UPDATE tb_pm2_5 SET 	
-			pm2_5 = #{pm25}
+		UPDATE tb_so2 SET 	
+			so2 = #{SO2}
 		WHERE id = #{id}
 	</update>
 	
 	<update id="delete">
-		UPDATE tb_pm2_5 SET 
+		UPDATE tb_so2 SET 
 			del_flag = #{DEL_FLAG_DELETE}
 		WHERE id = #{id}
 	</update>

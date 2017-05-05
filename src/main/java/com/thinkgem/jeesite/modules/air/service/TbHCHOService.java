@@ -10,38 +10,38 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.service.CrudService;
-import com.thinkgem.jeesite.modules.air.entity.TbTempHum;
-import com.thinkgem.jeesite.modules.air.dao.TbTempHumDao;
+import com.thinkgem.jeesite.modules.air.entity.TbHCHO;
+import com.thinkgem.jeesite.modules.air.dao.TbHCHODao;
 
 /**
- * 温湿度Service
+ * 甲醛Service
  * @author Frank Wang
  * @version 2017-05-05
  */
 @Service
 @Transactional(readOnly = true)
-public class TbTempHumService extends CrudService<TbTempHumDao, TbTempHum> {
+public class TbHCHOService extends CrudService<TbHCHODao, TbHCHO> {
 
-	public TbTempHum get(String id) {
+	public TbHCHO get(String id) {
 		return super.get(id);
 	}
 	
-	public List<TbTempHum> findList(TbTempHum tbTempHum) {
-		return super.findList(tbTempHum);
+	public List<TbHCHO> findList(TbHCHO tbHCHO) {
+		return super.findList(tbHCHO);
 	}
 	
-	public Page<TbTempHum> findPage(Page<TbTempHum> page, TbTempHum tbTempHum) {
-		return super.findPage(page, tbTempHum);
-	}
-	
-	@Transactional(readOnly = false)
-	public void save(TbTempHum tbTempHum) {
-		super.save(tbTempHum);
+	public Page<TbHCHO> findPage(Page<TbHCHO> page, TbHCHO tbHCHO) {
+		return super.findPage(page, tbHCHO);
 	}
 	
 	@Transactional(readOnly = false)
-	public void delete(TbTempHum tbTempHum) {
-		super.delete(tbTempHum);
+	public void save(TbHCHO tbHCHO) {
+		super.save(tbHCHO);
+	}
+	
+	@Transactional(readOnly = false)
+	public void delete(TbHCHO tbHCHO) {
+		super.delete(tbHCHO);
 	}
 	
 }

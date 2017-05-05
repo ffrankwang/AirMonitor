@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.thinkgem.jeesite.modules.air.dao.TbCO2Dao">
+<mapper namespace="com.thinkgem.jeesite.modules.air.dao.TbPM10Dao">
     
-	<sql id="tbCO2Columns">
+	<sql id="tbPM10Columns">
 		a.id AS "id",
-		a.co2 AS "CO2",
+		a.pm10 AS "PM10",
 		a.create_by AS "createBy.id",
 		a.create_date AS "createDate",
 		a.update_by AS "updateBy.id",
@@ -12,22 +12,22 @@
 		a.del_flag AS "delFlag"
 	</sql>
 	
-	<sql id="tbCO2Joins">
+	<sql id="tbPM10Joins">
 	</sql>
     
-	<select id="get" resultType="TbCO2">
+	<select id="get" resultType="TbPM10">
 		SELECT 
-			<include refid="tbCO2Columns"/>
-		FROM tb_co2 a
-		<include refid="tbCO2Joins"/>
+			<include refid="tbPM10Columns"/>
+		FROM tb_pm10 a
+		<include refid="tbPM10Joins"/>
 		WHERE a.id = #{id}
 	</select>
 	
-	<select id="findList" resultType="TbCO2">
+	<select id="findList" resultType="TbPM10">
 		SELECT 
-			<include refid="tbCO2Columns"/>
-		FROM tb_co2 a
-		<include refid="tbCO2Joins"/>
+			<include refid="tbPM10Columns"/>
+		FROM tb_pm10 a
+		<include refid="tbPM10Joins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
 		</where>
@@ -41,11 +41,11 @@
 		</choose>
 	</select>
 	
-	<select id="findAllList" resultType="TbCO2">
+	<select id="findAllList" resultType="TbPM10">
 		SELECT 
-			<include refid="tbCO2Columns"/>
-		FROM tb_co2 a
-		<include refid="tbCO2Joins"/>
+			<include refid="tbPM10Columns"/>
+		FROM tb_pm10 a
+		<include refid="tbPM10Joins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
 		</where>		
@@ -60,9 +60,9 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO tb_co2(
+		INSERT INTO tb_pm10(
 			id,
-			co2,
+			pm10,
 			create_by,
 			create_date,
 			update_by,
@@ -70,7 +70,7 @@
 			del_flag
 		) VALUES (
 			#{id},
-			#{CO2},
+			#{PM10},
 			#{createBy.id},
 			#{createDate},
 			#{updateBy.id},
@@ -80,14 +80,13 @@
 	</insert>
 	
 	<update id="update">
-		UPDATE tb_co2 SET 	
-			co2 = #{CO2},
-			update_date = #{updateDate}
+		UPDATE tb_pm10 SET 	
+			pm10 = #{PM10}
 		WHERE id = #{id}
 	</update>
 	
 	<update id="delete">
-		UPDATE tb_co2 SET 
+		UPDATE tb_pm10 SET 
 			del_flag = #{DEL_FLAG_DELETE}
 		WHERE id = #{id}
 	</update>

@@ -8,9 +8,9 @@ import com.thinkgem.jeesite.common.persistence.annotation.MyBatisDao;
 import com.thinkgem.jeesite.modules.air.entity.TbCO2;
 
 /**
- * CO2DAO接口
+ * 二氧化碳DAO接口
  * @author Frank Wang
- * @version 2017-04-27
+ * @version 2017-05-05
  */
 @MyBatisDao
 public interface TbCO2Dao extends CrudDao<TbCO2> {

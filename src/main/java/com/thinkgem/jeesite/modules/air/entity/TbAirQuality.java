@@ -14,46 +14,6 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
  */
 public class TbAirQuality extends DataEntity<TbAirQuality> {
 	
-	private static final long serialVersionUID = 1L;
-	private TbTempHum tempHum;		// temp_hum
-	private TbPm25 pm25;		// pm25
-	private TbCO2 co2;		// co2
 	
-	public TbAirQuality() {
-		super();
-	}
-
-	public TbAirQuality(String id){
-		super(id);
-	}
-
-	public TbTempHum getTempHum() {
-		return tempHum;
-	}
-
-	public void setTempHum(TbTempHum tempHum) {
-		this.tempHum = tempHum;
-	}
-
-	public TbPm25 getPm25() {
-		return pm25;
-	}
-
-	public void setPm25(TbPm25 pm25) {
-		this.pm25 = pm25;
-	}
-
-	public TbCO2 getCo2() {
-		return co2;
-	}
-
-	public void setCo2(TbCO2 co2) {
-		this.co2 = co2;
-	}
-
-	@Override
-	public String toString() {
-		return "The Current air quality: [temp=" + String.format("%.2f", tempHum.getTemp()) + ",hum="+String.format("%.2f", tempHum.getHum())+", pm25=" + pm25.getPm25() + ", co2=" + co2.getCo2() + "]";
-	}
 	
 }

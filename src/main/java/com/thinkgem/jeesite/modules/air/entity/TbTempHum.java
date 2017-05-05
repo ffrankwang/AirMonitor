@@ -9,7 +9,7 @@ import com.thinkgem.jeesite.common.persistence.DataEntity;
 /**
  * 温湿度Entity
  * @author Frank Wang
- * @version 2017-04-27
+ * @version 2017-05-05
  */
 public class TbTempHum extends DataEntity<TbTempHum> {
 	
@@ -40,6 +40,5 @@ public class TbTempHum extends DataEntity<TbTempHum> {
 	public void setHum(Float hum) {
 		this.hum = hum;
 	}
-
 	
 }
