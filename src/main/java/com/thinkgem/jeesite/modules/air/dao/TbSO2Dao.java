@@ -10,7 +10,7 @@ import com.thinkgem.jeesite.modules.air.entity.TbSO2;
 /**
  * 二氧化硫DAO接口
  * @author Frank Wang
- * @version 2017-05-05
+ * @version 2017-05-06
  */
 @MyBatisDao
 public interface TbSO2Dao extends CrudDao<TbSO2> {

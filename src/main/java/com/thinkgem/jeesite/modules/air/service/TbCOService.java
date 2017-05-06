@@ -10,38 +10,38 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.thinkgem.jeesite.common.persistence.Page;
 import com.thinkgem.jeesite.common.service.CrudService;
-import com.thinkgem.jeesite.modules.air.entity.TbCO2;
-import com.thinkgem.jeesite.modules.air.dao.TbCO2Dao;
+import com.thinkgem.jeesite.modules.air.entity.TbCO;
+import com.thinkgem.jeesite.modules.air.dao.TbCODao;
 
 /**
- * 二氧化碳Service
+ * 一氧化碳Service
  * @author Frank Wang
  * @version 2017-05-06
  */
 @Service
 @Transactional(readOnly = true)
-public class TbCO2Service extends CrudService<TbCO2Dao, TbCO2> {
+public class TbCOService extends CrudService<TbCODao, TbCO> {
 
-	public TbCO2 get(String id) {
+	public TbCO get(String id) {
 		return super.get(id);
 	}
 	
-	public List<TbCO2> findList(TbCO2 tbCO2) {
-		return super.findList(tbCO2);
+	public List<TbCO> findList(TbCO tbCO) {
+		return super.findList(tbCO);
 	}
 	
-	public Page<TbCO2> findPage(Page<TbCO2> page, TbCO2 tbCO2) {
-		return super.findPage(page, tbCO2);
-	}
-	
-	@Transactional(readOnly = false)
-	public void save(TbCO2 tbCO2) {
-		super.save(tbCO2);
+	public Page<TbCO> findPage(Page<TbCO> page, TbCO tbCO) {
+		return super.findPage(page, tbCO);
 	}
 	
 	@Transactional(readOnly = false)
-	public void delete(TbCO2 tbCO2) {
-		super.delete(tbCO2);
+	public void save(TbCO tbCO) {
+		super.save(tbCO);
+	}
+	
+	@Transactional(readOnly = false)
+	public void delete(TbCO tbCO) {
+		super.delete(tbCO);
 	}
 	
 }

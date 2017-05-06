@@ -25,7 +25,7 @@ import com.thinkgem.jeesite.modules.air.service.TbPM10Service;
 /**
  * PM10Controller
  * @author Frank Wang
- * @version 2017-05-05
+ * @version 2017-05-06
  */
 @Controller
 @RequestMapping(value = "${adminPath}/air/tbPM10")

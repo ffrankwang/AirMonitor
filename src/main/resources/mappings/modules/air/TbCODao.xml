@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.thinkgem.jeesite.modules.air.dao.TbSO2Dao">
+<mapper namespace="com.thinkgem.jeesite.modules.air.dao.TbCODao">
     
-	<sql id="tbSO2Columns">
+	<sql id="tbCOColumns">
 		a.id AS "id",
-		a.so2 AS "SO2",
+		a.co AS "CO",
 		a.create_by AS "createBy.id",
 		a.create_date AS "createDate",
 		a.update_by AS "updateBy.id",
@@ -12,26 +12,26 @@
 		a.del_flag AS "delFlag"
 	</sql>
 	
-	<sql id="tbSO2Joins">
+	<sql id="tbCOJoins">
 	</sql>
     
-	<select id="get" resultType="TbSO2">
+	<select id="get" resultType="TbCO">
 		SELECT 
-			<include refid="tbSO2Columns"/>
-		FROM tb_so2 a
-		<include refid="tbSO2Joins"/>
+			<include refid="tbCOColumns"/>
+		FROM tb_co a
+		<include refid="tbCOJoins"/>
 		WHERE a.id = #{id}
 	</select>
 	
-	<select id="findList" resultType="TbSO2">
+	<select id="findList" resultType="TbCO">
 		SELECT 
-			<include refid="tbSO2Columns"/>
-		FROM tb_so2 a
-		<include refid="tbSO2Joins"/>
+			<include refid="tbCOColumns"/>
+		FROM tb_co a
+		<include refid="tbCOJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
-			<if test="SO2 != null and SO2 != ''">
-				AND a.so2 &gt;= #{SO2}
+			<if test="CO != null and CO != ''">
+				AND a.co &gt;= #{CO}
 			</if>
 			<if test="beginUpdateDate != null and endUpdateDate != null and beginUpdateDate != '' and endUpdateDate != ''">
 				AND a.update_date BETWEEN #{beginUpdateDate} AND #{endUpdateDate}
@@ -47,11 +47,11 @@
 		</choose>
 	</select>
 	
-	<select id="findAllList" resultType="TbSO2">
+	<select id="findAllList" resultType="TbCO">
 		SELECT 
-			<include refid="tbSO2Columns"/>
-		FROM tb_so2 a
-		<include refid="tbSO2Joins"/>
+			<include refid="tbCOColumns"/>
+		FROM tb_co a
+		<include refid="tbCOJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
 		</where>		
@@ -66,9 +66,9 @@
 	</select>
 	
 	<insert id="insert">
-		INSERT INTO tb_so2(
+		INSERT INTO tb_co(
 			id,
-			so2,
+			co,
 			create_by,
 			create_date,
 			update_by,
@@ -76,7 +76,7 @@
 			del_flag
 		) VALUES (
 			#{id},
-			#{SO2},
+			#{CO},
 			#{createBy.id},
 			#{createDate},
 			#{updateBy.id},
@@ -86,13 +86,13 @@
 	</insert>
 	
 	<update id="update">
-		UPDATE tb_so2 SET 	
-			so2 = #{SO2}
+		UPDATE tb_co SET 	
+			co = #{CO}
 		WHERE id = #{id}
 	</update>
 	
 	<update id="delete">
-		UPDATE tb_so2 SET 
+		UPDATE tb_co SET 
 			del_flag = #{DEL_FLAG_DELETE}
 		WHERE id = #{id}
 	</update>

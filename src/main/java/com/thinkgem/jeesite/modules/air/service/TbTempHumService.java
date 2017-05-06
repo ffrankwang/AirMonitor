@@ -16,7 +16,7 @@ import com.thinkgem.jeesite.modules.air.dao.TbTempHumDao;
 /**
  * 温湿度Service
  * @author Frank Wang
- * @version 2017-05-05
+ * @version 2017-05-06
  */
 @Service
 @Transactional(readOnly = true)
