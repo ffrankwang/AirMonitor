@@ -8,42 +8,34 @@ import java.util.Date;
 import com.thinkgem.jeesite.common.persistence.DataEntity;
 
 /**
- * 温湿度Entity
+ * 一氧化碳Entity
  * @author Frank Wang
  * @version 2017-05-06
  */
-public class TbTempHum extends DataEntity<TbTempHum> {
+public class TbCO extends DataEntity<TbCO> {
 	
 	private static final long serialVersionUID = 1L;
-	private Float temp;		// 温度
-	private Float hum;		// 湿度
+	private Float CO;		// 一氧化碳
 	private Date beginUpdateDate;		// 开始 更新时间
 	private Date endUpdateDate;		// 结束 更新时间
 	
-	public TbTempHum() {
+	public TbCO() {
 		super();
 	}
 
-	public TbTempHum(String id){
+	public TbCO(String id){
 		super(id);
 	}
 
-	public Float getTemp() {
-		return temp;
+	
+	public Float getCO() {
+		return CO;
 	}
 
-	public void setTemp(Float temp) {
-		this.temp = temp;
-	}
-	
-	public Float getHum() {
-		return hum;
+	public void setCO(Float cO) {
+		CO = cO;
 	}
 
-	public void setHum(Float hum) {
-		this.hum = hum;
-	}
-	
 	public Date getBeginUpdateDate() {
 		return beginUpdateDate;
 	}

@@ -31,6 +31,15 @@
 		<include refid="tbTempHumJoins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="temp != null and temp != ''">
+				AND a.temp &gt;= #{temp}
+			</if>
+			<if test="hum != null and hum != ''">
+				AND a.hum &gt;= #{hum}
+			</if>
+			<if test="beginUpdateDate != null and endUpdateDate != null and beginUpdateDate != '' and endUpdateDate != ''">
+				AND a.update_date BETWEEN #{beginUpdateDate} AND #{endUpdateDate}
+			</if>
 		</where>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">

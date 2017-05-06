@@ -30,6 +30,12 @@
 		<include refid="tbPM10Joins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="PM10 != null and PM10 != ''">
+				AND a.pm10 &gt;= #{PM10}
+			</if>
+			<if test="beginUpdateDate != null and endUpdateDate != null and beginUpdateDate != '' and endUpdateDate != ''">
+				AND a.update_date BETWEEN #{beginUpdateDate} AND #{endUpdateDate}
+			</if>
 		</where>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">

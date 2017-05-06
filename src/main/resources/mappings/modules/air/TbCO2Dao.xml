@@ -30,6 +30,12 @@
 		<include refid="tbCO2Joins"/>
 		<where>
 			a.del_flag = #{DEL_FLAG_NORMAL}
+			<if test="CO2 != null and CO2 != ''">
+				AND a.co2 &gt;= #{CO2}
+			</if>
+			<if test="beginUpdateDate != null and endUpdateDate != null and beginUpdateDate != '' and endUpdateDate != ''">
+				AND a.update_date BETWEEN #{beginUpdateDate} AND #{endUpdateDate}
+			</if>
 		</where>
 		<choose>
 			<when test="page !=null and page.orderBy != null and page.orderBy != ''">

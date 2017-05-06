@@ -25,7 +25,7 @@ import com.thinkgem.jeesite.modules.air.service.TbSO2Service;
 /**
  * 二氧化硫Controller
  * @author Frank Wang
- * @version 2017-05-05
+ * @version 2017-05-06
  */
 @Controller
 @RequestMapping(value = "${adminPath}/air/tbSO2")

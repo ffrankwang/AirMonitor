@@ -10,7 +10,7 @@ import com.thinkgem.jeesite.modules.air.entity.TbCO2;
 /**
  * 二氧化碳DAO接口
  * @author Frank Wang
- * @version 2017-05-05
+ * @version 2017-05-06
  */
 @MyBatisDao
 public interface TbCO2Dao extends CrudDao<TbCO2> {
