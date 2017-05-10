@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.common.collect.Lists;
+import com.thinkgem.jeesite.common.config.Global;
+import com.thinkgem.jeesite.common.web.BaseController;
 import com.thinkgem.jeesite.modules.sys.entity.Office;
 import com.thinkgem.jeesite.modules.sys.entity.Role;
 import com.thinkgem.jeesite.modules.sys.entity.User;
@@ -20,7 +22,7 @@ import com.thinkgem.jeesite.modules.sys.service.SystemService;
 import com.thinkgem.jeesite.modules.sys.utils.UserUtils;
 
 @Controller
-public class RegisterController {
+public class RegisterController extends BaseController{
 	@Autowired
 	private SystemService systemService;
 
@@ -32,11 +34,15 @@ public class RegisterController {
 
 	@RequestMapping(value = "register/save", method = RequestMethod.POST)
 	public String save(User user,HttpServletRequest request, Model model, RedirectAttributes redirectAttributes) {
+		User isExistedUser = systemService.getUserByLoginName(user.getLoginName());
+		if(null!=isExistedUser){
+			addMessage(redirectAttributes, "该用户名已存在，注册失败");
+			return "redirect:/register";
+		}
 		User creater=UserUtils.getByLoginName("thinkgem");
 		//设置密码
 		user.setPassword(SystemService.entryptPassword(user.getNewPassword()));
-		Office office = new Office();
-		office.setId("61aeaa80672f4c3f9d8dfeff75c11a12");
+		Office office = creater.getOffice();
 		user.setOffice(office);
 		user.setCompany(office);
 		List<Role> roleList=Lists.newArrayList();

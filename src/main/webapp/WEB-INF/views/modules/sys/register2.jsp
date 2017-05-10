@@ -8,13 +8,40 @@
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="">
+<%@include file="/WEB-INF/views/include/head.jsp" %>
 <link rel="shortcut icon" href="${ctxStatic }/images/favicon.png"
 	type="image/png">
-
 <title>Bracket Responsive Bootstrap3 Admin</title>
-
 <link href="${ctxStatic }/mycss/style.default.css" rel="stylesheet">
+<script>
+		jQuery(document).ready(
+				function() {
+					$("#inputForm").validate({
+						submitHandler: function(form){
+							loading('正在提交，请稍等...');
+							form.submit();
+						},
+						errorContainer: "#messageBox",
+						errorPlacement: function(error, element) {
+							$("#messageBox").text("输入有误，请先更正。");
+							if (element.is(":checkbox")||element.is(":radio")||element.parent().is(".input-append")){
+								error.appendTo(element.parent().parent());
+							} else {
+								error.insertAfter(element);
+							}
+						}
+					});
 
+					jQuery(".select2").select2({
+						width : '100%',
+						minimumResultsForSearch : -1
+					});
+
+					jQuery(".select2-2").select2({
+						width : '100%'
+					});
+				});
+	</script>
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="${ctxStatic }/myjshtml5shiv.js"></script>
@@ -23,11 +50,6 @@
 </head>
 
 <body class="signin">
-
-
-
-
-
 	<section>
 
 		<div class="signuppanel">
@@ -92,12 +114,12 @@
 					<form:form id="inputForm" modelAttribute="user"
 						action="${pageContext.request.contextPath}/register/save"
 						method="post">
-
+						<sys:message content="${message}"/>
 						<h3 class="nomargin">注 册</h3>
 						<p class="mt5 mb20">
 							已经是会员? <a href="${ctx }"><strong>登录</strong></a>
 						</p>
-
+						
 						<div class="mb10">
 
 							<label class="control-label">姓名<font color="red">*</font></label>
@@ -166,50 +188,22 @@
 		<!-- signuppanel -->
 
 	</section>
+<%-- 
 
+	<script src="${ctxStatic }/myjs/jquery-1.11.1.min.js"></script>
+	<script src="${ctxStatic }/myjs/jquery-migrate-1.2.1.min.js"></script>
+	<script src="${ctxStatic }/myjs/bootstrap.min.js"></script>
+	<script src="${ctxStatic }/myjs/modernizr.min.js"></script>
+	<script src="${ctxStatic }/myjs/jquery.sparkline.min.js"></script>
+	<script src="${ctxStatic }/myjs/jquery.cookies.js"></script>
 
-	<script src="${ctxStatic }/myjsjquery-1.11.1.min.js"></script>
-	<script src="${ctxStatic }/myjsjquery-migrate-1.2.1.min.js"></script>
-	<script src="${ctxStatic }/myjsbootstrap.min.js"></script>
-	<script src="${ctxStatic }/myjsmodernizr.min.js"></script>
-	<script src="${ctxStatic }/myjsjquery.sparkline.min.js"></script>
-	<script src="${ctxStatic }/myjsjquery.cookies.js"></script>
+	<script src="${ctxStatic }/myjs/toggles.min.js"></script>
+	<script src="${ctxStatic }/myjs/retina.min.js"></script>
 
-	<script src="${ctxStatic }/myjstoggles.min.js"></script>
-	<script src="${ctxStatic }/myjsretina.min.js"></script>
+	<script src="${ctxStatic }/myjs/select2.min.js"></script>
 
-	<script src="${ctxStatic }/myjsselect2.min.js"></script>
-
-	<script src="${ctxStatic }/myjscustom.js"></script>
-	<script>
-		jQuery(document).ready(
-				function() {
-
-					jQuery(".select2").select2({
-						width : '100%',
-						minimumResultsForSearch : -1
-					});
-
-					jQuery(".select2-2").select2({
-						width : '100%'
-					});
-
-					// Please do not use the code below
-					// This is for demo purposes only
-					var c = jQuery.cookie('change-skin');
-					if (c && c == 'greyjoy') {
-						jQuery('.btn-success').addClass('btn-orange')
-								.removeClass('btn-success');
-					} else if (c && c == 'dodgerblue') {
-						jQuery('.btn-success').addClass('btn-primary')
-								.removeClass('btn-success');
-					} else if (c && c == 'katniss') {
-						jQuery('.btn-success').addClass('btn-primary')
-								.removeClass('btn-success');
-					}
-
-				});
-	</script>
+	<script src="${ctxStatic }/myjs/custom.js"></script> --%>
+	
 
 </body>
 </html>

@@ -51,7 +51,7 @@
                         <li><i class="fa fa-arrow-circle-o-right mr5"></i> SO2...</li>
                     </ul>
                     <div class="mb20"></div>
-                    <strong>不是会员? <a href="${pageContext.request.contextPath}/register">注册</a></strong>
+                    <strong>还不是会员? <a href="${pageContext.request.contextPath}/register">注册</a></strong>
                 </div><!-- signin0-info -->
             
             </div><!-- col-sm-7 -->
