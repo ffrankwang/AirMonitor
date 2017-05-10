@@ -15,6 +15,7 @@ import com.thinkgem.jeesite.common.service.CrudService;
 import com.thinkgem.jeesite.common.utils.JMap;
 import com.thinkgem.jeesite.modules.air.dao.TbAirQualityDao;
 import com.thinkgem.jeesite.modules.air.entity.TbAirQuality;
+import com.thinkgem.jeesite.modules.air.entity.TbCO;
 import com.thinkgem.jeesite.modules.air.entity.TbCO2;
 import com.thinkgem.jeesite.modules.air.entity.TbHCHO;
 import com.thinkgem.jeesite.modules.air.entity.TbPM10;
@@ -41,6 +42,8 @@ public class TbAirQualityService extends CrudService<TbAirQualityDao, TbAirQuali
 	private TbPM10Service pm10Service;
 	@Autowired
 	private TbHCHOService hchoService;
+	@Autowired
+	TbCOService coService;
 
 	public TbAirQuality get(String id) {
 		return super.get(id);
@@ -68,23 +71,26 @@ public class TbAirQualityService extends CrudService<TbAirQualityDao, TbAirQuali
 		JMap create = JMap.create();
 		Map<String, Object> currentAQ = AQGenerator.getCurrentAQ();
 		create.set(currentAQ);
-		//保存信息
+		// 保存信息
 		TbCO2 co2 = new TbCO2();
 		TbSO2 so2 = new TbSO2();
 		TbTempHum tempHum = new TbTempHum();
 		TbPM10 pm10 = new TbPM10();
 		TbHCHO hcho = new TbHCHO();
+		TbCO co = new TbCO();
 		co2.setCO2((Float) currentAQ.get("CO2"));
 		so2.setSO2((Float) currentAQ.get("SO2"));
 		tempHum.setTemp((Float) currentAQ.get("temp"));
 		tempHum.setHum((Float) currentAQ.get("hum"));
 		pm10.setPM10((Float) currentAQ.get("PM10"));
 		hcho.setHCHO((Float) currentAQ.get("HCHO"));
+		co.setCO((Float) currentAQ.get("CO"));
 		co2Service.save(co2);
 		so2Service.save(so2);
 		tempHumService.save(tempHum);
 		pm10Service.save(pm10);
 		hchoService.save(hcho);
+		coService.save(co);
 		return create;
 	}
 }

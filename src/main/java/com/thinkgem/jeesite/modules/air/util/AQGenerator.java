@@ -39,12 +39,14 @@ public class AQGenerator {
 		BigDecimal b4 = new BigDecimal(RandomUtils.nextFloat(22, 28));
 		BigDecimal b5 = new BigDecimal(RandomUtils.nextFloat(40, 80));
 		BigDecimal b6 = new BigDecimal(RandomUtils.nextFloat(3, 15)/100);
+		BigDecimal b7 = new BigDecimal(RandomUtils.nextFloat(3, 7));
 		Float f1 = b1.setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
 		Float f2 = b2.setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
 		Float f3 = b3.setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
 		Float f4 = b4.setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
 		Float f5 = b5.setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
 		Float f6 = b6.setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
+		Float f7 = b7.setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();
 		HashMap<String, Object> map = Maps.newHashMap();
 		Float CO2 = f1;
 		Float SO2 = f2;
@@ -52,6 +54,7 @@ public class AQGenerator {
 		Float temp = f4;
 		Float hum = f5;
 		Float PM10 = f6;
+		Float CO=f7;
 
 		map.put("CO2", CO2);
 		map.put("SO2", SO2);
@@ -59,6 +62,7 @@ public class AQGenerator {
 		map.put("temp", temp);
 		map.put("hum", hum);
 		map.put("PM10", PM10);
+		map.put("CO", CO);
 		return map;
 	}
 }
