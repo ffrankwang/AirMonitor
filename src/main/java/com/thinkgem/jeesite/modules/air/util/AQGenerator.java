@@ -7,6 +7,7 @@ import java.util.Map;
 import org.apache.commons.lang3.RandomUtils;
 
 import com.google.common.collect.Maps;
+import com.thinkgem.jeesite.common.utils.DSerialPort;
 import com.thinkgem.jeesite.modules.air.entity.TbAirQuality;
 
 /**
@@ -18,7 +19,15 @@ public class AQGenerator {
 	private static TbAirQuality AQ = new TbAirQuality();
 	// private static TbCO2 co2 = new TbCO2();
 	// private static TbPm25 pm25 = new TbPm25();
-
+	{
+		DSerialPort serialPort=new DSerialPort();
+		serialPort.listPort();
+		serialPort.selectPort("COM3");
+		serialPort.startRead(3000);
+		
+		Thread t1=new Thread(serialPort);
+		t1.run();
+	}
 	public static Map<String, Object> getCurrentAQ() {
 		/*
 		 * TbTempHum tempHum = DBUtil.queryTempHum();
