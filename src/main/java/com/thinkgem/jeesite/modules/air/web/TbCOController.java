@@ -53,6 +53,14 @@ public class TbCOController extends BaseController {
 		model.addAttribute("page", page);
 		return "modules/air/tbCOList";
 	}
+	
+	@RequiresPermissions("air:tbCO:view")
+	@RequestMapping(value = {"listDel"})
+	public String listDel(TbCO tbCO, HttpServletRequest request, HttpServletResponse response, Model model) {
+		Page<TbCO> page = tbCOService.findPage(new Page<TbCO>(request, response), tbCO); 
+		model.addAttribute("page", page);
+		return "modules/air/tbCOList2";
+	}
 
 	@RequiresPermissions("air:tbCO:view")
 	@RequestMapping(value = "form")

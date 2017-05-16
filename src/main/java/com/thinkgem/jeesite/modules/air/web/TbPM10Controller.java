@@ -53,6 +53,14 @@ public class TbPM10Controller extends BaseController {
 		model.addAttribute("page", page);
 		return "modules/air/tbPM10List";
 	}
+	
+	@RequiresPermissions("air:tbPM10:view")
+	@RequestMapping(value = {"listDel"})
+	public String listDel(TbPM10 tbPM10, HttpServletRequest request, HttpServletResponse response, Model model) {
+		Page<TbPM10> page = tbPM10Service.findPage(new Page<TbPM10>(request, response), tbPM10); 
+		model.addAttribute("page", page);
+		return "modules/air/tbPM10List2";
+	}
 
 	@RequiresPermissions("air:tbPM10:view")
 	@RequestMapping(value = "form")

@@ -53,7 +53,13 @@ public class TbTempHumController extends BaseController {
 		model.addAttribute("page", page);
 		return "modules/air/tbTempHumList";
 	}
-
+	@RequiresPermissions("air:tbTempHum:view")
+	@RequestMapping(value = {"listDel"})
+	public String listDel(TbTempHum tbTempHum, HttpServletRequest request, HttpServletResponse response, Model model) {
+		Page<TbTempHum> page = tbTempHumService.findPage(new Page<TbTempHum>(request, response), tbTempHum); 
+		model.addAttribute("page", page);
+		return "modules/air/tbTempHumList2";
+	}
 	@RequiresPermissions("air:tbTempHum:view")
 	@RequestMapping(value = "form")
 	public String form(TbTempHum tbTempHum, Model model) {

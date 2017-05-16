@@ -58,6 +58,10 @@
 				<td>
 					<fmt:formatDate value="${tbCO2.updateDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
 				</td>
+				<shiro:hasPermission name="air:tbCO2:edit"><td>
+    				<%-- <a href="${ctx}/air/tbCO2/form?id=${tbCO2.id}">修改</a> --%>
+					<a href="${ctx}/air/tbCO2/delete?id=${tbCO2.id}" onclick="return confirmx('确认要删除该二氧化碳吗？', this.href)">删除</a>
+				</td></shiro:hasPermission>
 			</tr>
 		</c:forEach>
 		</tbody>

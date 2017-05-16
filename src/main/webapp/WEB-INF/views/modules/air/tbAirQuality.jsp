@@ -3,6 +3,9 @@
 <html>
 <head>
 <title>空气质量管理</title>
+<style>	
+	
+</style>
 <meta name="decorator" content="default" />
 
 <script type="text/javascript">
@@ -19,13 +22,24 @@
 			dataType : "json",
 			success : function(data) {
 				if (data.isOk) {
-					$("#a1").html(data.temp+"℃");
-					$("#a2").html(data.hum+"%");
-					$("#a3").html(data.CO2+"%");
-					$("#a4").html(data.SO2+"mg/m3");
-					$("#a5").html(data.PM10+"mg/m3");
-					$("#a6").html(data.HCHO+"mg/m3");
-					$("#a7").html(data.CO+"mg/m3");
+					if(data.temp>=25){
+						//$("#a1").replaceWith("");
+						$("#a1").html("<font color=\"red\" size=\"3\">温度已："+data.temp+"°c，请及时采取措施!</font>");
+						$("#a2").html(data.hum+"%");
+						$("#a3").html(data.CO2+"%");
+						$("#a4").html(data.SO2+"mg/m3");
+						$("#a5").html(data.PM10+"mg/m3");
+						$("#a6").html(data.HCHO+"mg/m3");
+						$("#a7").html(data.CO+"mg/m3");
+					}else{
+						$("#a1").html("<font size=\"2\">"+data.temp+"°c</font>");
+						$("#a2").html(data.hum+"%");
+						$("#a3").html(data.CO2+"%");
+						$("#a4").html(data.SO2+"mg/m3");
+						$("#a5").html(data.PM10+"mg/m3");
+						$("#a6").html(data.HCHO+"mg/m3");
+						$("#a7").html(data.CO+"mg/m3");
+					}
 				} else {
 					$("#airQuality").html("遇到了点问题。。。");
 				}
@@ -40,14 +54,14 @@
 </head>
 <body>
 	<h2 align="center">当前空气质量</h2>
-	<button class="btn btn-primary" id="monitor">开始监测</button>
+	<br>
 	<div id="airQuality" class="table-responsive">
 		<table class="table table-striped table-bordered">
 			<tr>
 			<thead>
 				<tr>
-					<th>监测指标</th>
-					<th>数值</th>
+					<th width="50%">监测指标</th>
+					<th width="50%">数值</th>
 				</tr>
 			</thead>
 

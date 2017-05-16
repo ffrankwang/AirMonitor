@@ -53,6 +53,14 @@ public class TbSO2Controller extends BaseController {
 		model.addAttribute("page", page);
 		return "modules/air/tbSO2List";
 	}
+	
+	@RequiresPermissions("air:tbSO2:view")
+	@RequestMapping(value = {"listDel"})
+	public String listDel(TbSO2 tbSO2, HttpServletRequest request, HttpServletResponse response, Model model) {
+		Page<TbSO2> page = tbSO2Service.findPage(new Page<TbSO2>(request, response), tbSO2); 
+		model.addAttribute("page", page);
+		return "modules/air/tbSO2List2";
+	}
 
 	@RequiresPermissions("air:tbSO2:view")
 	@RequestMapping(value = "form")

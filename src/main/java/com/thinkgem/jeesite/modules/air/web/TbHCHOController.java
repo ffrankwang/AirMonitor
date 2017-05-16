@@ -53,6 +53,13 @@ public class TbHCHOController extends BaseController {
 		model.addAttribute("page", page);
 		return "modules/air/tbHCHOList";
 	}
+	@RequiresPermissions("air:tbHCHO:view")
+	@RequestMapping(value = {"listDel"})
+	public String listDel(TbHCHO tbHCHO, HttpServletRequest request, HttpServletResponse response, Model model) {
+		Page<TbHCHO> page = tbHCHOService.findPage(new Page<TbHCHO>(request, response), tbHCHO); 
+		model.addAttribute("page", page);
+		return "modules/air/tbHCHOList2";
+	}
 
 	@RequiresPermissions("air:tbHCHO:view")
 	@RequestMapping(value = "form")

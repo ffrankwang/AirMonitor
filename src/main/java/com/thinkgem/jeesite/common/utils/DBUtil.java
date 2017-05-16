@@ -12,7 +12,7 @@ public class DBUtil {
 	private static Connection conn=getConnection();
 
 	public static Connection getConnection() {
-		String url = "jdbc:MySQL://localhost:3306/air_monitor";
+		String url = "jdbc:MySQL://127.0.0.1:3306/air_monitor";
 		String driverClassName = "com.mysql.jdbc.Driver";
 		String username = "root";
 		String password = "123456";
