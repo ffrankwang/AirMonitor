@@ -4,6 +4,8 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.thinkgem.jeesite.common.utils.DBUtil;
+import com.thinkgem.jeesite.modules.air.entity.TbTempHum;
 import org.apache.commons.lang3.RandomUtils;
 
 import com.google.common.collect.Maps;
@@ -29,24 +31,17 @@ public class AQGenerator {
 		t1.run();
 	}
 	public static Map<String, Object> getCurrentAQ() {
-		/*
-		 * TbTempHum tempHum = DBUtil.queryTempHum();
-		 * co2.setCo2(RandomUtils.nextInt(100, 300));
-		 * pm25.setPm25(RandomUtils.nextInt(100, 200)); //保留两位小数 BigDecimal b1 =
-		 * new BigDecimal(RandomUtils.nextFloat(25, 30)); BigDecimal b2 = new
-		 * BigDecimal(RandomUtils.nextFloat(25, 30)); float f1 = b1.setScale(2,
-		 * BigDecimal.ROUND_HALF_UP).floatValue(); float f2 = b2.setScale(2,
-		 * BigDecimal.ROUND_HALF_UP).floatValue(); // b.setScale(2,
-		 * BigDecimal.ROUND_HALF_UP) AQ.setCo2(co2);
-		 * DBUtil.insertCO2(co2.getCo2()+""); AQ.setPm25(pm25);
-		 * DBUtil.insertPM2_5(pm25.getPm25()+""); AQ.setTempHum(tempHum);
-		 */
+
+		 TbTempHum tempHum = DBUtil.queryTempHum();
+
 		// 保留两位小数
 		BigDecimal b1 = new BigDecimal(RandomUtils.nextFloat(4, 11)/100);
 		BigDecimal b2 = new BigDecimal(RandomUtils.nextFloat(2, 6)/10);
 		BigDecimal b3 = new BigDecimal(RandomUtils.nextFloat(0, 1)/10);
-		BigDecimal b4 = new BigDecimal(RandomUtils.nextFloat(22, 28));
-		BigDecimal b5 = new BigDecimal(RandomUtils.nextFloat(40, 80));
+
+		BigDecimal b4 = new BigDecimal(tempHum.getTemp()==null?1:tempHum.getTemp());
+		BigDecimal b5 = new BigDecimal(tempHum.getHum()==null?1:tempHum.getHum());
+
 		BigDecimal b6 = new BigDecimal(RandomUtils.nextFloat(3, 15)/100);
 		BigDecimal b7 = new BigDecimal(RandomUtils.nextFloat(3, 7));
 		Float f1 = b1.setScale(2, BigDecimal.ROUND_HALF_UP).floatValue();

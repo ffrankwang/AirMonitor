@@ -5,8 +5,10 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Date;
 
+import com.thinkgem.jeesite.modules.air.entity.TbTempHum;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 
 public class DBUtil {
 	private static Connection conn=getConnection();
@@ -15,7 +17,7 @@ public class DBUtil {
 		String url = "jdbc:MySQL://127.0.0.1:3306/air_monitor";
 		String driverClassName = "com.mysql.jdbc.Driver";
 		String username = "root";
-		String password = "123456";
+		String password = "root";
 		DbUtils.loadDriver(driverClassName);
 		try {
 			conn = DriverManager.getConnection(url, username, password);
@@ -55,7 +57,7 @@ public class DBUtil {
 			e.printStackTrace();
 		}
 	}
-/*
+
 	public static TbTempHum queryTempHum() {
 		QueryRunner qr = new QueryRunner();
 		String sql = "SELECT * FROM tb_temp_hum ORDER BY create_date DESC LIMIT 1";
@@ -67,6 +69,6 @@ public class DBUtil {
 		}
 
 		return lastTempHum;
-	}*/
+	}
 
 }
