@@ -4,11 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 import com.thinkgem.jeesite.modules.air.entity.TbTempHum;
 import org.apache.commons.dbutils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.MapListHandler;
 
 public class DBUtil {
 	private static Connection conn=getConnection();
@@ -69,6 +72,21 @@ public class DBUtil {
 		}
 
 		return lastTempHum;
+	}
+
+	public static List<Map<String, Object>> queryDatas() {
+		QueryRunner qr = new QueryRunner();
+		String sql = "SELECT a.id,a.title,b.data1,b.data2 FROM cdb_brand_type_5 a,cdb_brand_type_6 b WHERE a.specialid = b.specialid limit 100000";
+		try {
+
+			List<Map<String, Object>> query = qr.query(conn, sql, new MapListHandler());
+			return query;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+
+
 	}
 
 }

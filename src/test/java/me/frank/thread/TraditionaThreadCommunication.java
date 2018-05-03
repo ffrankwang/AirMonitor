@@ -1,4 +1,4 @@
-package me.frank.thread.test;
+package me.frank.thread;
 /**
  * 线程间通信，子线程运行5次，主线程运行10次，交替往复运行。
  * @author Frank Wang

@@ -1,4 +1,4 @@
-package me.frank.thread.test;
+package me.frank.thread;
 
 import org.junit.Test;
 
